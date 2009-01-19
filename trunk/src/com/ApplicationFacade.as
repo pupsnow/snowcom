@@ -31,7 +31,7 @@
 		override protected function initializeController():void{
 			super.initializeController();
 			//register some Commands
-			registerCommand(APP_STARTUP,StartUpCommand);//对Command进行注册。有人发送一个STARTUP的消息时，程序就自动生成一个StartupCommand来处理。
+			registerCommand(STARTUP,StartUpCommand);//对Command进行注册。有人发送一个STARTUP的消息时，程序就自动生成一个StartupCommand来处理。
 			
 		}
 		
