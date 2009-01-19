@@ -1,0 +1,24 @@
+<projectDescription>
+  <id>1232345196613</id>
+  <name>FF</name>
+  <asVersion>0</asVersion>
+  <boundTemplate>file:///C|/Documents and Settings/Administrator/Local Settings/Application Data/Adobe/Flash CS4/zh_CN/Configuration/Project/templates/boundClass_as3.as</boundTemplate>
+  <classTemplate>file:///C|/Documents and Settings/Administrator/Local Settings/Application Data/Adobe/Flash CS4/zh_CN/Configuration/Project/templates/standardClass_as3.as</classTemplate>
+  <classPath>./src</classPath>
+  <defaultApp>file:///E|/workspace/flash/fla/main.fla</defaultApp>
+  <rootURI>file:///E|/workspace/flash/</rootURI>
+  <flexSDK/>
+  <sources editable="false"/>
+  <libraries editable="false"/>
+  <externalLibraries editable="false"/>
+  <compileList editable="false"/>
+  <recentFiles editable="false">
+    <uri label="Main.as">file:///E|/workspace/flash/src/Main.as</uri>
+    <uri label="main.html">file:///E|/workspace/flash/fla/main.html</uri>
+    <uri label="main.swf">file:///E|/workspace/flash/fla/main.swf</uri>
+    <uri label="main.fla">file:///E|/workspace/flash/fla/main.fla</uri>
+    <uri label="ApplicationFacade.as">file:///E|/workspace/flash/src/com/ApplicationFacade.as</uri>
+    <uri label="ICommand.as">file:///E|/workspace/flash/src/org/puremvc/as3/interfaces/ICommand.as</uri>
+  </recentFiles>
+  <locations editable="false"/>
+</projectDescription>
