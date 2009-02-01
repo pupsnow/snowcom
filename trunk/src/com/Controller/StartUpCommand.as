@@ -1,19 +1,13 @@
-package com.Controller
+package  com.Controller
 {
-	import org.puremvc.as3.patterns.command.SimpleCommand;
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.interfaces.ICommand;
-
-	public class StartUpCommand extends SimpleCommand implements ICommand
+	import org.puremvc.as3.patterns.command.MacroCommand;
+	
+	public class StartUpCommand extends MacroCommand
 	{
-		public function StartUpCommand()
+		override protected function initializeMacroCommand():void
 		{
-			super();
+			addSubCommand(ModelPrepCommand);
+			addSubCommand(ViewPrepCommand);
 		}
-		
-	   override	public function execute(notification:INotification):void
-		{
-		}
-		
 	}
 }
