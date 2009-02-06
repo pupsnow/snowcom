@@ -1,7 +1,6 @@
 ﻿package  
  { 
-	import com.ApplicationFacade;
-	
+	import com.ApplicationFacade;	
 	import fl.containers.UILoader;
 	import fl.controls.Label;	
 	import flash.display.Loader;
@@ -17,7 +16,7 @@
 	    private var loader:Loader;
 	    private var movieloader:Loader;
 	    private var perlabel:Label;
-	    private  var model:modeltext=modeltext.getInstance();
+	    private var model:modeltext=modeltext.getInstance();
 		public function Main()
 		{   				
 			facade = ApplicationFacade.getInstance();
@@ -51,16 +50,15 @@
 		  // movieloader=new Loader();
 		  // movieloader.load(movieurl);
 		   this.removeChild(loader);
-		  // movieloader.x=0;
+		     //movieloader.x=0;
 		   //movieloader.y=0;   		   
-		 //  this.addChild(movieloader);
+		   //this.addChild(movieloader);
 	       var uiloader:Loader=new Loader();
 	       uiloader.load(new URLRequest("movie.swf"));
 	       //uiloader.setSize(500,200);
-	       uiloader.x=100;
-	       uiloader.y=100;
-	       this.addChild(uiloader);
-		    
+	       uiloader.x=300;
+	       uiloader.y=300;
+	       this.addChild(uiloader);		    
 		}
 	}
 }
