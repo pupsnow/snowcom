@@ -7,7 +7,7 @@ package  com.Controller
 		override protected function initializeMacroCommand():void
 		{
 			addSubCommand(ModelPrepCommand);
-			addSubCommand(ViewPrepCommand);
+			addSubCommand(ViewPrepCommand);		
 		}
 	}
 }

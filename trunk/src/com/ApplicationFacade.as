@@ -1,12 +1,15 @@
 ﻿package com
 {
+	import com.Controller.MovieCommand;
 	import com.Controller.StartUpCommand;
 	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
 
 	public class ApplicationFacade extends Facade implements IFacade
-	{  public static const STARTUP:String = "startup";
+	{   public static const STARTUP:String = "startup";
+	    public static const MOVIE:String="Movie";
+	    public static const CHANG_SWF:String="ChangSwf";//切换swf,公用nitification.
 		public function ApplicationFacade()
 		{
 			super();
@@ -32,7 +35,7 @@
 			super.initializeController();
 			//register some Commands
 			registerCommand(STARTUP,StartUpCommand);//对Command进行注册。有人发送一个STARTUP的消息时，程序就自动生成一个StartupCommand来处理。
-			
+			registerCommand(MOVIE,MovieCommand);
 		}
 		
 		/**

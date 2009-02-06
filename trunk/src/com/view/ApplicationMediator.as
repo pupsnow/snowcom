@@ -8,6 +8,7 @@ package com.view
 	{  public static const NAME:String = "ApplicationMediator";
 		public function ApplicationMediator(viewComponent:Object=null)
 		{
+			
 			super(NAME, viewComponent);
 		}
 
