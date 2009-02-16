@@ -5,24 +5,25 @@
 	
 	import fl.controls.Button;
 	import fl.controls.Label;
-	import fl.data.DataProvider;
 	import fl.managers.StyleManager;
 	
 	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.KeyboardEvent;
+	import flash.net.LocalConnection;
 	import flash.net.URLRequest;
 	import flash.text.TextFormat;
 	import flash.ui.Keyboard;
 	
 	import selfdesizenUI.controls.TabBar;	
+	[SWF(width='1000',height='600',backgroundColor='0xFFFFFF',frameRate='30')]
 	public class Movie extends  Sprite
 	{   public var loadManager:LoadSwfManager= LoadSwfManager.getInstance();
 		private var model:modeltext=modeltext.getInstance();
 		private var btn:Button;
 		private var label:Label;
 		private var  bar:TabBar;
-		private  var photoFlow:PhotoFlow;
+		private  var photoFlowexp:PhotoFlow;
 		//private var tree:Tree;
 		private   var textf:TextFormat=new TextFormat();
 		/**
@@ -44,6 +45,7 @@
 			var tf:TextFormat = new TextFormat();
 			tf.color = 0xFF0000;
 			tf.size=30;
+			tf.font="华康海报体W12(P)";//不用打包字体就能够使用哦。。flex应该也可以。但是怎么会自动打包在样式文建里面呢。？
 			StyleManager.setStyle("textFormat", tf);//所有的组件都具有同样的样式 。
             //StyleManager.setComponentStyle(Button, "textFormat",tf);//所有的button都具有相同的样式
 		}
@@ -66,6 +68,8 @@
 		    var url:URLRequest=new  URLRequest("../assets/movie/movieback.swf");
 			var loader:Loader=new Loader();
 			loader.load(url);
+			loader.width=1000;
+			loader.height=600;
 			this.addChild(loader);
 		}	
 		/**
@@ -80,7 +84,7 @@
 //			{label:"国         产", data:"4/20/1993"},
 //			{label:"日         韩", data:"4/20/1993"},
 //			{label:"欧         美", data:"9/06/1997"},
-//			{label:"最近 观看", data:"9/06/1997"},
+//			{label:"最近   观看", data:"9/06/1997"},
 //			{label:"收         藏", data:"9/06/1997"},
 //			{label:"搜         索", data:"9/06/1997"}]
 //			bar.dataProvider=new DataProvider(items);
@@ -105,29 +109,45 @@
 	     */		
 	    private  function creatPoster():void
 		 {
-			photoFlow=new PhotoFlow();
-			photoFlow.width=300;
-			photoFlow.height=300;
-			photoFlow.photoHeight=150;
-			photoFlow.photoWidth=150;
-			photoFlow.resizeImage="none";
-			this.addChild(photoFlow);
-			photoFlow.x=450;
-			photoFlow.y=250;
-			photoFlow.rotation=0;
-			photoFlow.scaleY=1;
-			photoFlow.scaleX=1;
-			photoFlow.view=50;
-			photoFlow.autoFlip=false;
-			photoFlow.showReflection=true;
-			photoFlow.photoHeight=50;
-			photoFlow.photoAngle=50;
-		    photoFlow.reflectionDepth=70;
-		    photoFlow.reflectionExtend=50;
-			photoFlow.selectedReflectionAlpha=70;
-			photoFlow.selectedReflectionDepth=100;
-			photoFlow.xmlURL="photos.xml";			
+			photoFlowexp=new PhotoFlow();
+			photoFlowexp.width=300;
+			photoFlowexp.height=300;
+			photoFlowexp.photoHeight=150;
+			photoFlowexp.photoWidth=150;
+			photoFlowexp.resizeImage="none";
+			this.addChild(photoFlowexp);
+			photoFlowexp.x=450;
+			photoFlowexp.y=250;
+			photoFlowexp.rotation=0;
+			photoFlowexp.scaleY=1;
+			photoFlowexp.scaleX=1;
+			photoFlowexp.view=50;
+			photoFlowexp.autoFlip=false;
+			photoFlowexp.showReflection=true;
+			photoFlowexp.photoHeight=50;
+			photoFlowexp.photoAngle=50;
+		    photoFlowexp.reflectionDepth=70;
+		    photoFlowexp.reflectionExtend=50;
+			photoFlowexp.selectedReflectionAlpha=70;
+			photoFlowexp.selectedReflectionDepth=100;
+			photoFlowexp.xmlURL="photos.xml";			
 		 }	
+		 
+		  private function GC():void
+	    {
+	    	
+	    	try 
+			{
+				var lc1:LocalConnection = new LocalConnection();
+				var lc2:LocalConnection = new LocalConnection();
+	
+				lc1.connect('name');
+				lc2.connect('name');
+			}
+			catch (e:Error)
+			{
+			}
+	    }
 		/**
 		 *键盘事件。。。。 
 		 * @param event
@@ -138,24 +158,26 @@
 		 	switch (event.keyCode)
 		 	{
 		 		case Keyboard.ESCAPE:
-		 		    photoFlow.xmlURL="";
-		 		    //var data:Array=new Array();
-		 		    //bar.dataProvider=new DataProvider(data);;
-		 		    this.removeChild(photoFlow);	
+		 		    photoFlowexp.xmlURL="";
+		 		   // var data:Array=new Array();
+		 		   // bar.dataProvider=new DataProvider(data);;
+		 		    this.removeChild(photoFlowexp);	
 		 		    this.removeChild(btn);	 		    
 		 		 	LoadSwfManager.getInstance().unloadSwf();
 					LoadSwfManager.getInstance().loadSwf("../assets/firstswf.swf");	   
 					btn.removeEventListener(KeyboardEvent.KEY_DOWN,keyDownHander); 
 		 		break;
 		 		case Keyboard.ENTER:
-		 		photoFlow.xmlURL="";
-		 		    //var datae:Array=new Array();
+		 		photoFlowexp.xmlURL="";
+		 		   //var datae:Array=new Array();
 		 		   // bar.dataProvider=new DataProvider(datae);;
-		 		    this.removeChild(photoFlow);	
+		 		    this.removeChild(photoFlowexp);	
 		 		    this.removeChild(btn);
 		 		    LoadSwfManager.getInstance().unloadSwf();
-		 		    LoadSwfManager.getInstance().loadSwf("moviePlay.swf");
+		 		  
+		 		    //LoadSwfManager.getInstance().loadSwf("moviePlay.swf");
 		 		    btn.removeEventListener(KeyboardEvent.KEY_DOWN,keyDownHander); 	
+		 		    GC();
 		 		break;
 		 	}
 		                                                                                                                                                                                                                                                                                                                                                                                              }
